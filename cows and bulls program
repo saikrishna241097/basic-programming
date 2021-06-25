@@ -1,0 +1,40 @@
+import random
+
+def compare_numbers(number, user_guess):
+    bullcow = [0,0,0] #cows, then bulls
+    for i in range(len(number)):
+        if number[i] == user_guess[i]:
+            bullcow[1]+=1
+        elif number[i] in user_guess:
+            bullcow[0] += 1
+        else:
+            bullcow[2]+=1
+    return bullcow
+
+if __name__=="__main__":
+    playing = True #gotta play the game
+    number = str(random.randint(1000,9999)) #random 4 digit number
+    print(number)
+    guesses = 0
+
+    print("Let's play a game of Cowbull!") #explanation
+    print("I will generate a number, and you have to guess the numbers one digit at a time.")
+    print("For every number in the wrong place, you get a bull. For every one in the right place, you get a cow.")
+    print("The game ends when you get 4 cows!")
+    print("Type exit at any prompt to exit.")
+
+    while playing:
+        user_guess = input("Give me your best 4 digit number guess!")
+        if user_guess == "exit":
+            break
+        cowbullcount = compare_numbers(number,user_guess)
+        guesses+=1
+
+        print("You have "+ str(cowbullcount[0]) + " bulls, and " + str(cowbullcount[1]) + " cows.")
+
+        if cowbullcount[1]==4:
+            playing = False
+            print("You win the game after " + str(guesses) + "! The number was "+str(number))
+            break #redundant exit
+        else:
+            print("Your guess isn't quite right, try again.")
