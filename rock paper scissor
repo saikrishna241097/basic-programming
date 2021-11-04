@@ -1,0 +1,18 @@
+import random
+s = ['rock', 'paper', 'scissor']
+p1 = input("enter an element: ")
+if p1 == s[0] or p1 == s[1] or p1 == s[2]:
+    p2 = random.choice(s)
+    print(p2)
+    if p1 == s[0] and p2 == s[2]:
+        print("rock beats scissors")
+    elif p1 == s[2] and p2 == s[1]:
+        print("scissor beats paper")
+    elif p1 == s[2] and p2 == s[0]:
+        print("rock beats scissor")
+    elif p1 == s[1] and p2 == s[2]:
+        print("scissor beats paper")
+    else:
+        print("play again")
+else:
+    print("please enter element in s ")
